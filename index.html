@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chimp Dandy Labs</title>
+<meta name="description" content="Chimp Dandy Labs. Simplicity is the ultimate sophistication.">
+<meta name="theme-color" content="#100456">
+<link rel="canonical" href="https://chimpdandy.com/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chimpdandy.com/">
+<meta property="og:title" content="Chimp Dandy Labs">
+<meta property="og:description" content="Simplicity is the ultimate sophistication.">
+<meta property="og:image" content="https://chimpdandy.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: "Anton"; src: url("/fonts/anton.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "DM Serif Display"; src: url("/fonts/dm-serif-display-italic.woff2") format("woff2"); font-style: italic; font-weight: 400; font-display: swap; }
+  @font-face { font-family: "DM Mono"; src: url("/fonts/dm-mono-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+  :root {
+    --navy: #100456;
+    --teal: #88c5c8;
+    --cream: #fcfdef;
+    --gutter: clamp(16px, 4vmin, 56px);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--cream);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* ---------- Hero: the logo art fills the screen ---------- */
+  .hero {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    background-color: var(--cream);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Landscape (default): art extended to the left, chimp anchored bottom-right */
+    background-image: url("/img/bg-wide.jpg");
+    background-image: image-set(url("/img/bg-wide.webp") type("image/webp"), url("/img/bg-wide.jpg") type("image/jpeg"));
+    background-position: right bottom;
+  }
+
+  /* Text block sits in the open stripes, clear of the chimp */
+  .content {
+    position: absolute;
+    container-type: size;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(14px, 3.2cqh, 34px);
+    /* Landscape: left column; chimp's left edge sits ~0.76 x viewport-height from the right */
+    left: var(--gutter);
+    top: var(--gutter);
+    bottom: calc(var(--gutter) + 40px);
+    width: calc(100vw - 80vh - 2 * var(--gutter));
+    animation: rise .9s cubic-bezier(.2,.7,.2,1) both;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: "Anton", "Impact", "Arial Narrow Bold", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: .9;
+    letter-spacing: .01em;
+    font-size: min(37cqi, 17cqh);
+    color: var(--navy);
+    /* retro letterpress: cream offset edge so letters lift off the stripes */
+    text-shadow: .045em .045em 0 var(--cream), -.012em -.012em 0 var(--cream), .012em -.012em 0 var(--cream), -.012em .012em 0 var(--cream);
+  }
+  h1 span { display: block; }
+
+  .tagline {
+    margin: 0;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(16px, min(5.4cqi, 3.6cqh), 30px);
+    line-height: 1.2;
+    background: var(--cream);
+    border: 2px solid var(--navy);
+    padding: .35em .75em .4em;
+    box-shadow: 4px 4px 0 var(--navy);
+    max-width: 100%;
+  }
+
+  .contact {
+    display: inline-block;
+    font-family: "DM Mono", ui-monospace, Menlo, monospace;
+    font-weight: 500;
+    font-size: clamp(13px, min(3.6cqi, 2.6cqh), 18px);
+    letter-spacing: .04em;
+    color: var(--cream);
+    background: var(--navy);
+    text-decoration: none;
+    padding: .9em 1.3em;
+    border: 2px solid var(--navy);
+    box-shadow: 4px 4px 0 var(--teal), 4px 4px 0 2px var(--navy);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .contact::before { content: "\2709\00a0\00a0"; }
+  .contact:hover, .contact:focus-visible {
+    background: var(--cream);
+    color: var(--navy);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--teal), 6px 6px 0 2px var(--navy);
+    outline: none;
+  }
+  .contact:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--teal), 1px 1px 0 2px var(--navy); }
+
+  footer {
+    position: absolute;
+    left: var(--gutter);
+    bottom: max(14px, env(safe-area-inset-bottom));
+    font-family: "DM Mono", ui-monospace, Menlo, monospace;
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: .04em;
+    color: rgba(16, 4, 86, .78);
+    background: rgba(252, 253, 239, .82);
+    padding: .45em .8em;
+    margin: 0;
+  }
+
+  /* ---------- Near-square screens (tablets, square windows): chimp centred, text above ---------- */
+  @media (max-aspect-ratio: 4/3) {
+    .hero {
+      background-image: url("/img/bg-square.jpg");
+      background-image: image-set(url("/img/bg-square.webp") type("image/webp"), url("/img/bg-square.jpg") type("image/jpeg"));
+      background-position: center bottom;
+    }
+    .content {
+      left: var(--gutter);
+      right: var(--gutter);
+      width: auto;
+      top: var(--gutter);
+      bottom: auto;
+      /* space above the hat: hat top is 47.8% down the art, art scaled to cover */
+      height: calc(min(47.8vh, 100vh - 52.2vw) - var(--gutter) - 1vh);
+      align-items: center;
+      text-align: center;
+    }
+    h1 { font-size: min(13cqi, 21cqh); }
+    h1 span { display: inline; }
+    footer {
+      left: 0; right: 0; bottom: 0;
+      text-align: center;
+      color: rgba(252, 253, 239, .85);
+      background: rgba(16, 4, 86, .55);
+      padding: .7em 1em max(.7em, env(safe-area-inset-bottom));
+    }
+  }
+
+  /* ---------- Phones (tall): taller art, name stacked above the hat ---------- */
+  @media (max-aspect-ratio: 3/4) {
+    .hero {
+      background-image: url("/img/bg-tall.jpg");
+      background-image: image-set(url("/img/bg-tall.webp") type("image/webp"), url("/img/bg-tall.jpg") type("image/jpeg"));
+      background-position: center bottom;
+    }
+    .content {
+      /* hat top is 940px (of 2600) above the bottom of the art */
+      height: calc(min(63.8vh, 100vh - 78.3vw) - var(--gutter) - 2vh);
+    }
+    h1 { font-size: min(30cqi, 19cqh); }
+    h1 span { display: block; }
+  }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .content { animation: none; } .contact { transition: none; } }
+</style>
+</head>
+<body>
+  <main class="hero">
+    <div class="content">
+      <h1><span>Chimp</span> <span>Dandy</span> <span>Labs</span></h1>
+      <p class="tagline">Simplicity is the ultimate sophistication.</p>
+      <a class="contact" href="mailto:contact@chimpdandy.com">contact@chimpdandy.com</a>
+    </div>
+    <footer>&copy; 2026 Chimp Dandy Labs. All rights reserved.</footer>
+  </main>
+  <!-- Cookie-free visitor stats (GoatCounter). Dashboard: https://chimpdandy.goatcounter.com -->
+  <script data-goatcounter="https://chimpdandy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
